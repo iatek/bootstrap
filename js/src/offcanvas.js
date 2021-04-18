@@ -114,6 +114,7 @@ class Offcanvas extends BaseComponent {
 
     if (!this._config.scroll) {
       scrollBarHide()
+      this._enforceFocusOnElement(this._element)
     }
 
     this._element.classList.add(CLASS_NAME_TOGGLING)
@@ -125,7 +126,6 @@ class Offcanvas extends BaseComponent {
     const completeCallBack = () => {
       this._element.classList.remove(CLASS_NAME_TOGGLING)
       EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
-      this._enforceFocusOnElement(this._element)
     }
 
     setTimeout(completeCallBack, getTransitionDurationFromElement(this._element))
